@@ -1,5 +1,5 @@
 CC=gcc
-CCFLAGS=-Wall
+CCFLAGS=-Wall -g
 LIBS=-ljpeg
 
 all: main
