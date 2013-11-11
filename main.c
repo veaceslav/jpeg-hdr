@@ -4,8 +4,9 @@
 int main(int argc, char** argv)
 {
 
-    JSAMPLE* my_img  = 0;
+    unsigned char* my_img  = 0;
     int w = 0, h = 0;
+    //int i,j;
 
     if(argc < 5)
     {
@@ -13,6 +14,18 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    read_jpeg_file(my_img, w, h, argv[1]);
+    read_jpeg_file(&my_img, &h, &w, argv[1]);
+    /*
+    for(i=0; i< h; i++)
+    {
+        for(j = 0; j < w*3; j++)
+        {
+            printf("%d ",my_img[i*h*3 +j]);
+        }
+        printf("\n");
+    }
+    */
+
+    write_jpeg_file(my_img, h,w, "test_out.jpg", 100);
     return 0;
 }
