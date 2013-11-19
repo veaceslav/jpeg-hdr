@@ -15,7 +15,7 @@ double get_luminance(unsigned char* raw_image, unsigned long vector_size)
     }
 
     img_key = get_image_key(lum, vector_size/3);
-    printf("Got Image key %lf\n", img_key);
+   // printf("Got Image key %lf\n", img_key);
     free(lum);
     return img_key;
 }
@@ -30,7 +30,7 @@ double get_image_key(float* lum, unsigned long lum_size)
     {
         buff = buff + log(DELTA + (double)(lum[i]));
     }
-    printf("Got buff %lf \n", buff);
+    //printf("Got buff %lf \n", buff);
 
     img_key = buff/(double)lum_size;
 

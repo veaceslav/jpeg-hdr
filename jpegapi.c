@@ -69,13 +69,7 @@ int read_jpeg_file(unsigned char** raw_image, int* img_h, int* img_w,
     jpeg_stdio_src( &cinfo, infile );
     /* reading the image header which contains image information */
     jpeg_read_header( &cinfo, TRUE );
-    /* Uncomment the following to output image information, if needed. */
-    /*--
-     p rintf( "JPEG File Infor*mation: \n" );
-     printf( "Image width and height: %d pixels and %d pixels.\n", cinfo.image_width, cinfo.image_height );
-     printf( "Color components per pixel: %d.\n", cinfo.num_components );
-     printf( "Color space: %d.\n", cinfo.jpeg_color_space );
-     --*/
+
     /* Start decompression jpeg here */
     jpeg_start_decompress( &cinfo );
 
@@ -98,4 +92,5 @@ int read_jpeg_file(unsigned char** raw_image, int* img_h, int* img_w,
     free( row_pointer[0] );
     fclose( infile );
     /* yup, we succeeded! */
+    return 1;
 }
