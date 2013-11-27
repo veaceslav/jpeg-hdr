@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/slavik/git/jpeg-hdr/opencl_parralel/hdr.c
+hdr.h
+/home/slavik/git/jpeg-hdr/opencl_parralel/hdr.h
+math.h
+-
+stdlib.h
+-
+stdio.h
+-
+time.h
+-
+sys/time.h
+-
+
+/home/slavik/git/jpeg-hdr/opencl_parralel/hdr.h
+openclwrap.h
+/home/slavik/git/jpeg-hdr/opencl_parralel/openclwrap.h
+
+/home/slavik/git/jpeg-hdr/opencl_parralel/openclwrap.h
+CL/cl.h
+-
+stdio.h
+-
+
