@@ -36,9 +36,7 @@ double get_luminance(unsigned char* raw_image, unsigned long vector_size,
     int vsize = vector_size/3;
 
     check2(clSetKernelArg(kernel, 0, sizeof(bufferIN),  (void*)&bufferIN));
-    check2(clSetKernelArg(kernel, 1, sizeof(double), NULL));
-    check2(clSetKernelArg(kernel, 2, sizeof(int),  (void*)&vsize));
-    check2(clSetKernelArg(kernel, 3, sizeof(double),  (void*)&img_key));
+    check2(clSetKernelArg(kernel, 1, sizeof(bufferOUT),  (void*)&bufferOUT));
 
     size_t global_work = vector_size/3;
 
@@ -49,28 +47,20 @@ double get_luminance(unsigned char* raw_image, unsigned long vector_size,
     check2(clFinish(queue));
 
     // read back to host memory from CL buffer
-    clEnqueueReadBuffer(queue, bufferOUT, CL_TRUE, 0, vector_size/3*sizeof(double),
+    clEnqueueReadBuffer(queue, bufferOUT, CL_TRUE, 0, global_work*sizeof(double),
                         lum, 0, 0, 0);
 
     clReleaseMemObject(bufferIN);
     clReleaseMemObject(bufferOUT);
 
-    printf("%lf %lf\n",lum[0], lum[5]);
 
-
-    /**
-    for(i = 0; i < vector_size; i=i+3)
-    {
-        lum[i/3] = RED_WEIGHT*raw_image[i] +GREEN_WEIGHT*raw_image[i+1] + BLUE_WEIGHT*raw_image[i+2];
-    }
-    */
-
-
+    printf("%lf %lf\n", lum[0], lum[6]);
 
     printf("Time OpenCL: %ld,%ld sec\n", (end.tv_sec - start.tv_sec),
            (end.tv_usec - start.tv_usec));
-    //img_key = get_image_key(lum, vector_size/3);
-   // printf("Got Image key %lf\n", img_key);
+    img_key = get_image_key(lum, vector_size/3);
+
+    printf("Got Image key %lf\n", img_key);
     free(lum);
     return img_key;
 }
@@ -84,8 +74,9 @@ double get_image_key(double* lum, unsigned long lum_size)
     for(i = 0 ; i < lum_size; i++)
     {
         buff = buff + lum[i];
+        //printf("%lf ", lum[i]);
     }
-    //printf("Got buff %lf \n", buff);
+    printf("Got buff %lf \n", buff);
 
     img_key = buff/(double)lum_size;
 

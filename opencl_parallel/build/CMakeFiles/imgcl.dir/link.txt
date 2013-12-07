@@ -1,1 +1,0 @@
-/usr/bin/cc      CMakeFiles/imgcl.dir/main.c.o CMakeFiles/imgcl.dir/openclwrap.c.o CMakeFiles/imgcl.dir/jpegapi.c.o CMakeFiles/imgcl.dir/hdr.c.o  -o imgcl -rdynamic -lOpenCL -ljpeg -lm 
