@@ -30,7 +30,6 @@ double get_image_key(float* lum, unsigned long lum_size)
     {
         buff = buff + log(DELTA + (double)(lum[i]));
     }
-    //printf("Got buff %lf \n", buff);
 
     img_key = buff/(double)lum_size;
 
@@ -51,9 +50,9 @@ void apply_tone_mapping(unsigned char* raw_image, unsigned long vector_size)
     {
         double tmp_pixel = (double)raw_image[i] * light_ajust;
         tmp_pixel*= range_fix(tmp_pixel);
-        if(tmp_pixel > 255)
-            tmp_pixel = 255;
-
+        //if(tmp_pixel > 255)
+        //    tmp_pixel = 255;
+        tmp_pixel = tmp_pixel > 255.0 ? 255 : tmp_pixel;
         raw_image[i] = (char)tmp_pixel;
     }
 }

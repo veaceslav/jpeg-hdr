@@ -48,8 +48,8 @@ int main(int argc, char** argv)
     gettimeofday(&end, NULL);
 
 
-    printf("Time: %ld,%ld sec\n", (end.tv_sec - start.tv_sec),
-     (end.tv_usec - start.tv_usec));
+    printf("Times: %lf\n", (float)(((end.tv_sec * 1000000 + end.tv_usec)
+    - (start.tv_sec * 1000000 + start.tv_usec)))/1000000);
 
     write_jpeg_file(img_hdr, h,w, argv[4], 100);
     return 0;
