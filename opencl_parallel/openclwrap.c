@@ -196,7 +196,7 @@ cl_kernel get_kernel(char* filename, char* kernel_name,
     f_size = ftell(fp); /* This returns 29696, but file is 85 bytes */
     fseek(fp, 0, SEEK_SET);
     code_s = sizeof(char) * f_size;
-    code = malloc(code_s);
+    code = calloc(f_size+1, sizeof(char));
     result = fread(code, 1, f_size, fp); /* This returns 1045, it should be the same as f_size */
 
     const char* source = code;

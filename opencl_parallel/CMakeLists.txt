@@ -18,7 +18,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 	SET (EXTRA_LIBS ${EXTRA_LIBS} OpenCL)
 	SET (EXTRA_LIBS ${EXTRA_LIBS} jpeg)
 	SET (EXTRA_LIBS ${EXTRA_LIBS} m)
-	SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/opt/AMDAPP/include -L/opt/AMDAPP/lib/x86_64/")
+	SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/opt/AMDAPP/include -L/opt/AMDAPP/lib/x86_64/ -g")
 endif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 #Windows support
